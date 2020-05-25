@@ -21,4 +21,19 @@ def table30():
 
     print("-------------------------------------------------")
 
+def menu():
+    list = hltv.top30()
+    choice = input("Choose the rank of the team you want to view: ")
+    choice = int(choice) - 1
+
+    players = list[choice].get('players')
+
+    print(str(list[choice].get('name')))
+
+    for i in range(5):
+        print(players[i].get('name'))
+
+
 table30()
+
+menu()
