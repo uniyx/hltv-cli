@@ -37,3 +37,23 @@ def top30():
 
         teams.append(newteam)
     return(teams)
+
+def listresults():
+    html = requests.get("https://www.hltv.org/results")
+    hltv = bs(html.text, "lxml")
+
+    results = []
+
+    sublist =  hltv.findAll("div", {"class": "results-holder", })[2]
+
+    for result in sublist.findAll("div", {"class": "result-con", }):
+
+        newresult = {'team1': result.find('div', {"class": "line-align team1"}).select('.team ')[0].text.strip(),
+                     'team2': result.find('div', {"class": "line-align team2"}).select('.team ')[0].text.strip()
+
+        }
+
+        results.append(newresult)
+    print(results[0:3])
+
+listresults()
