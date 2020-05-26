@@ -49,11 +49,12 @@ def listresults():
     for result in sublist.findAll("div", {"class": "result-con", }):
 
         newresult = {'team1': result.find('div', {"class": "line-align team1"}).select('.team ')[0].text.strip(),
-                     'team2': result.find('div', {"class": "line-align team2"}).select('.team ')[0].text.strip()
-
+                     'team2': result.find('div', {"class": "line-align team2"}).select('.team ')[0].text.strip(),
+                     'score1': result.find('td', {"class": "result-score"}).findAll('span')[0].text.strip(),
+                     'score2': result.find('td', {"class": "result-score"}).findAll('span')[1].text.strip(),
+                     'event': result.find('span', {"class": "event-name"}).text.strip(),
+                     'map': result.find('div', {"class": "map-text"}).text.strip()
         }
 
         results.append(newresult)
-    print(results[0:3])
-
-listresults()
+    return(results)

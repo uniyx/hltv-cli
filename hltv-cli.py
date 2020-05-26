@@ -21,19 +21,39 @@ def table30():
 
     print("-------------------------------------------------")
 
-def menu():
+    ##INPUTS
+
     list = hltv.top30()
     choice = input("Choose the rank of the team you want to view: ")
-    choice = int(choice) - 1
 
-    players = list[choice].get('players')
+    if(choice == 0):
+        menu()
+    else:
+        choice = int(choice) - 1
 
-    print(str(list[choice].get('name')))
+        players = list[choice].get('players')
 
-    for i in range(5):
-        print(players[i].get('name'))
+        print(str(list[choice].get('name')))
 
+        for i in range(5):
+            print(players[i].get('name'))
 
-table30()
+def menu():
+
+    print("Welcome to HLTV-CLI.py")
+    print("Select a menu option")
+    print("1 - Top 30 Teams")
+    print("2 - Results")
+
+    x = input("")
+
+    pick(x)
+
+def pick(choice): 
+    switcher = { 
+        1: table30(), 
+        2: "one", 
+        3: "two", 
+    } 
 
 menu()
